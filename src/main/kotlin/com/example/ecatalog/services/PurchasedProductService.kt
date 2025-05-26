@@ -77,7 +77,6 @@ class PurchasedProductService {
 
         productService.save(soldProduct)
 
-        product.owner
         delete(product)
 
         return ResponseEntity("$soldProduct\nsold", HttpStatus.OK)
