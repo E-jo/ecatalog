@@ -46,6 +46,7 @@ class SecurityConfig {
                     .requestMatchers(HttpMethod.POST, "/users/register").permitAll()
                     .requestMatchers(HttpMethod.POST, "/products").hasAuthority("ADMIN")
                     .requestMatchers(HttpMethod.POST, "/users/remove/**").hasAuthority("ADMIN")
+                    .requestMatchers(HttpMethod.PUT, "/products/**").hasAuthority("ADMIN")
                     .anyRequest().authenticated()
             }
             .httpBasic()
