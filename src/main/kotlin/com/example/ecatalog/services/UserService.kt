@@ -40,8 +40,8 @@ class UserService : UserDetailsService {
         return userRepository.save(user)
     }
 
-    fun delete(user: User): User {
-        return userRepository.delete(user)
+    fun delete(user: User) {
+        userRepository.delete(user)
     }
 
     @Throws(UsernameNotFoundException::class)

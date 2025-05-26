@@ -48,5 +48,15 @@ class UserController {
     ): ResponseEntity<*> {
         return userService.removeUser(id)
     }
+
+    @GetMapping(path = ["/users"])
+    fun allUsers(
+        @AuthenticationPrincipal userDetails: UserDetailsAdapter
+    ): ResponseEntity<*> {
+        return ResponseEntity(
+            userService.findAll(),
+            HttpStatus.OK
+        )
+    }
 }
 

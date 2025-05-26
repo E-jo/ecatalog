@@ -11,5 +11,5 @@ interface UserRepository : PagingAndSortingRepository<User, Int> {
     fun findByUserName(userName: String): Optional<User>
     fun findById(id: Long): Optional<User>
     fun save(user: User): User
-    fun delete(user: User): User
+    fun delete(user: User)
 }
