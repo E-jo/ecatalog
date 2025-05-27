@@ -17,12 +17,11 @@ import java.util.logging.Logger
 import kotlin.jvm.optionals.getOrNull
 
 @Service
-class UserService : UserDetailsService {
+class UserService(
+    private val userRepository: UserRepository
+) : UserDetailsService {
 
     val log: Logger = Logger.getAnonymousLogger()
-
-    @Autowired
-    lateinit var userRepository: UserRepository
 
     fun findAll(): List<User> {
         return userRepository.findAll()

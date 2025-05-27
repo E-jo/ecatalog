@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class UserController {
-    @Autowired
-    lateinit var userService: UserService
+class UserController(
+    private val userService: UserService
+) {
 
     @PostMapping(path = ["/users/register"])
     fun registerUser(

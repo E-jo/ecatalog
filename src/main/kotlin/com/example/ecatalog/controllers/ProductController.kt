@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @Validated
-class ProductController {
-    @Autowired
-    lateinit var productService: ProductService
-
-    @Autowired
-    lateinit var purchasedProductService: PurchasedProductService
+class ProductController(
+    private val productService: ProductService,
+    private val purchasedProductService: PurchasedProductService
+) {
 
     @GetMapping(path = ["/products"])
     fun getAllProducts(): ResponseEntity<*> {

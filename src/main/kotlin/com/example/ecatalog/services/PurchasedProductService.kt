@@ -13,16 +13,11 @@ import java.util.*
 import kotlin.jvm.optionals.getOrNull
 
 @Service
-class PurchasedProductService {
-    @Autowired
-    lateinit var purchasedProductRepository: PurchasedProductRepository
-
-    @Autowired
-    @Lazy
-    lateinit var productService: ProductService
-
-    @Autowired
-    lateinit var userService: UserService
+class PurchasedProductService(
+    private val purchasedProductRepository: PurchasedProductRepository,
+    @Lazy private val productService: ProductService,
+    private val userService: UserService
+) {
 
     fun save(purchasedProduct: PurchasedProduct): PurchasedProduct {
         return purchasedProductRepository.save(purchasedProduct)

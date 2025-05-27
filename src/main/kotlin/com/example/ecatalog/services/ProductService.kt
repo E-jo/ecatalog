@@ -5,6 +5,7 @@ import com.example.ecatalog.models.Product
 import com.example.ecatalog.models.PurchasedProduct
 import com.example.ecatalog.models.UserDetailsAdapter
 import com.example.ecatalog.repositories.ProductRepository
+import com.example.ecatalog.repositories.PurchasedProductRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -14,15 +15,11 @@ import java.util.logging.Logger
 import kotlin.jvm.optionals.getOrNull
 
 @Service
-class ProductService {
-    @Autowired
-    lateinit var productRepository: ProductRepository
-
-    @Autowired
-    lateinit var purchasedProductService: PurchasedProductService
-
-    @Autowired
-    lateinit var userService: UserService
+class ProductService(
+    private val productRepository: ProductRepository,
+    private val purchasedProductService: PurchasedProductService,
+    private val userService: UserService
+) {
 
     val productsApiUrl = "http://localhost:8080/products/"
     val log: Logger = Logger.getAnonymousLogger()
